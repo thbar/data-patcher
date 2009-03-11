@@ -1,6 +1,14 @@
 h2. WHAT
 
-A small gem to do what I need.
+Given a bunch of ruby Hash, an ActiveRecord model class and a unique key, DataPatcher creates a Hash of the differences between the bunch of Hash and the table.
+
+Have a look at the (very simple) spec/data_patcher.rb to get a better understanding of what's possible.
+
+h2. REAL-LIFE USE
+
+This is useful if you are aggregating various data sources and what to have a good level of control on what is added or modified. I do that on "Learnivore.com":http://www.learnivore.com and for some of my clients data processing.
+
+When doing this, I tend to parse all the sources again, compare the result to already registered data, and see what are the differences and if they should be applied.
 
 h2. TEST
 
@@ -10,9 +18,11 @@ Test data is recreated automatically when running rake spec.
 
 h2. IDEAS
 
+* find another name - I don't like DataPatcher
 * find a better Hash patch format
 ** move the key outside the diff Hash ?
 * support removed records ? (I don't need that for the moment)
+* add some way to apply the patch directly inside DataPatcher ?
 
 h2. COPYRIGHT
 

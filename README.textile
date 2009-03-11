@@ -1,0 +1,19 @@
+h2. WHAT
+
+A small gem to do what I need.
+
+h2. TEST
+
+Edit spec/database.yml and run rake spec.
+
+Test data is recreated automatically when running rake spec.
+
+h2. IDEAS
+
+* find a better Hash patch format
+** move the key outside the diff Hash ?
+* support removed records ? (I don't need that for the moment)
+
+h2. COPYRIGHT
+
+Copyright (c) 2008 Thibaut Barrère. See LICENSE for details.

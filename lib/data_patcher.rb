@@ -1,9 +1,19 @@
-require 'activesupport'
+require 'active_record'
+require 'active_support'
 
 class DataPatcher
+  attr_reader :model, :key, :patch
   
-  def analyze_record(key, attributes)
-    existing = Item.find_by_asin(attributes[key])
+  # model: activerecord class
+  # key: unique key accross all model instances
+  def initialize(model, key)
+    @model = model
+    @key = key
+    @patch = {}
+  end
+    
+  def analyze_record(attributes)
+    existing = model.find(:first, :conditions => { key => attributes[key] })
     if existing
       existing_attributes = existing.attributes.dup.symbolize_keys.except(:id)
       diff = attributes.diff(existing_attributes)
@@ -17,15 +27,6 @@ class DataPatcher
       patch[:added] ||= []
       patch[:added] << attributes
     end
-  end
-  
-  # test commodity - remove ?
-  def analyze_records(key, records)
-    records.each { |record| analyze_record(key, record) }
-  end
-  
-  def patch
-    @patch ||= {}
   end
   
 end

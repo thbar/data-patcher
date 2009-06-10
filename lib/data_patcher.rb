@@ -6,10 +6,10 @@ class DataPatcher
   
   # model: activerecord class
   # key: unique key accross all model instances
-  def initialize(model, key)
+  def initialize(model, key, patch={})
     @model = model
     @key = key
-    @patch = {}
+    @patch = patch
   end
 
   # attributes hash must include key

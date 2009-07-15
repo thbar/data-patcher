@@ -17,7 +17,7 @@ require 'yaml'
 
 # database configuration and fixtures setup
 
-ActiveRecord::Base.establish_connection(YAML.load(IO.read(File.dirname(__FILE__) + "/database.yml")))
+ActiveRecord::Base.establish_connection(YAML.load(IO.read(File.dirname(__FILE__) + "/../database.yml")))
 
 # Load Models
 Dir[File.dirname(__FILE__) + "/models/*.rb"].sort.each do |file|
